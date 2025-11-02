@@ -50,7 +50,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col items-center justify-center p-4 font-sans">
+    <div className="min-h-screen bg-[#9E1839] w-full flex flex-col items-center justify-center p-4 font-sans">
       <main className="w-full max-w-md mx-auto">
         {renderStep()}
       </main>

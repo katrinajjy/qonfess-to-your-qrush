@@ -100,7 +100,7 @@ const CameraStep: React.FC<CameraStepProps> = ({ onPhotoCapture }) => {
                 <button onClick={retakePhoto} className="w-full bg-slate-300 text-slate-800 font-bold py-3 px-6 rounded-lg hover:bg-slate-400 transition-all duration-300">
                     Retake
                 </button>
-                <button onClick={confirmPhoto} className="w-full bg-green-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-600 transition-all duration-300">
+                <button onClick={confirmPhoto} className="w-full bg-green-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-[#3AA563] transition-all duration-300">
                     Oh yeah babey
                 </button>
             </div>

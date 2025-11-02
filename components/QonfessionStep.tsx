@@ -39,6 +39,8 @@ const QonfessionStep: React.FC<QonfessionStepProps> = ({
   const [accomplishments, setAccomplishments] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [showSuccess, setShowSuccess] = useState(false);
+  // ADDED: New state for the certificate view
+  const [showCertificate, setShowCertificate] = useState(false); 
   const [noButtonPosition, setNoButtonPosition] = useState({
     top: 0,
     left: 0,
@@ -101,24 +103,77 @@ const QonfessionStep: React.FC<QonfessionStepProps> = ({
     });
   }, [isDodging]);
 
-  // Success State View
-  if (showSuccess) {
+  // NEW HANDLER: To manage the two-stage success transition
+  const handleYes = useCallback(() => {
+    setShowSuccess(true);
+    // Delay the appearance of the certificate
+    setTimeout(() => {
+      setShowCertificate(true);
+    }, 1500);
+  }, []);
+
+  // --- Success State View STAGE 1 (Immediate Success Message) ---
+  if (showSuccess && !showCertificate) {
     return (
-      <div className="fixed inset-0 flex items-center justify-center p-8 bg-slate-100/70 backdrop-blur-sm z-50">
+      <div className="fixed inset-0 flex items-center justify-center p-8 bg-[#3AA563] backdrop-blur-sm z-50">
         <div className="text-center p-8 bg-white rounded-2xl shadow-xl animate-fade-in max-w-lg w-full">
           <div className="text-6xl mb-4">🎉</div>
           <h2 className="text-3xl font-bold text-slate-800 mb-4">
-            You said YES!
+            You said YES!!!
           </h2>
           <p className="text-slate-600 mb-8">
-            I'm so glad you said yes, it really was the right choice
+            Our date is now legally binding 💍
           </p>
-          <button
-            onClick={onReset}
-            className="w-full bg-rose-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-rose-600 transition-all duration-300"
-          >
-            Start Over
-          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // --- Success State View STAGE 2 (Marriage Certificate) ---
+  if (showCertificate) {
+    return (
+      <div className="fixed inset-0 flex items-center justify-center p-8 bg-[#3AA563]/80 backdrop-blur-sm z-50">
+        <div 
+            // Certificate styling for slow emergence
+            className="p-12 bg-white rounded-lg shadow-2xl w-full max-w-2xl border-8 border-double border-rose-500 transform scale-0 animate-fade-in"
+            style={{ animationFillMode: 'forwards', animationDuration: '0.8s' }} 
+        >
+          <div className="text-center font-serif">
+            <h1 className="text-5xl font-extrabold text-rose-700 mb-4 tracking-wider">
+              CERTIFICATE OF LEGALLY BINDING DATE
+            </h1>
+            <p className="text-xl text-slate-600 mb-8">
+              This document certifies the immediate and unbreakable **Commitment to Co-create Meaningful Experiences** between:
+            </p>
+            
+            {/* Signature Area */}
+            <div className="mt-12 space-y-10">
+              <p className="text-3xl font-display text-slate-900 mb-2 border-b border-dashed border-slate-400 pb-1">
+                {crushDetails?.name || "ME:)))"}
+              </p>
+              <p className="text-lg text-slate-500 mb-8">
+                The Recipient of Optimal Attention
+              </p>
+              
+              <div className="relative border-b-2 border-slate-900 mx-auto max-w-sm">
+                <input 
+                    type="text" 
+                    placeholder="Sign your name here..." 
+                    className="w-full text-center text-2xl font-handwriting bg-transparent focus:outline-none"
+                />
+              </div>
+              <p className="text-lg text-slate-500">
+                The Proactive Confessor (Sign Above)
+              </p>
+            </div>
+            
+            <button
+              onClick={onReset}
+              className="mt-12 w-full bg-rose-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-rose-600 transition-all duration-300"
+            >
+              Document Complete: Begin Dating
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -159,19 +214,38 @@ const QonfessionStep: React.FC<QonfessionStepProps> = ({
 
         {/* Content Area - Takes remaining 3/5 width, centered vertically */}
         <div className="flex flex-col w-full md:w-3/5 justify-center items-center md:items-start text-center md:text-left p-4 md:p-0">
+          
           {/* Accomplishments/Loading Area */}
-          <div className="text-center flex-grow flex items-center justify-center mb-12 max-w-2xl">
+          <div className="text-center flex-grow flex items-center justify-center flex-col mb-4 max-w-2xl">
             {loading && <LoadingMessage />}
             {error && <p className="text-red-500 text-2xl">{error}</p>}
+            
             {accomplishments && !loading && (
-              <p className="text-slate-700 italic text-2xl font-serif leading-relaxed">"{accomplishments}"</p>
+              <>
+                {/* TITLE */}
+                <h3 className="text-xl font-extrabold text-slate-800 mb-4">
+                  A Non-Exhaustive List of My Socio-Cultural Achievements
+                </h3>
+                
+                {/* BULLET LIST */}
+                <ul className="text-left text-slate-700 font-serif leading-relaxed space-y-2 text-xl md:text-lg">
+                  {accomplishments
+                    .split('\n')
+                    .filter(line => line.startsWith('-'))
+                    .map((line, index) => (
+                      <li key={index} className="list-disc ml-6">
+                        {line.trim().substring(2).trim()}
+                      </li>
+                    ))}
+                </ul>
+              </>
             )}
           </div>
 
           {/* Buttons Area */}
-          <div className="mt-auto md:mt-12 text-center w-full max-w-md">
-            <p className="text-3xl font-extrabold text-slate-800 mb-6">
-              Will you go out with me?
+          <div className="mt-4 md:mt-4 text-center w-full max-w-xl">
+            <p className="text-7xl font-extrabold text-slate-800 mb-6">
+              WILL YOU GO OUT WITH ME?
             </p>
             <div
               className={`grid ${
@@ -179,10 +253,10 @@ const QonfessionStep: React.FC<QonfessionStepProps> = ({
               } gap-6 h-16`}
             >
               <button
-                onClick={() => setShowSuccess(true)}
+                onClick={handleYes} // USING NEW HANDLER
                 className="w-full bg-green-500 text-white font-bold text-xl py-3 px-6 rounded-lg hover:bg-green-600 transition-all duration-300"
               >
-                Yes
+                Yes 🥰
               </button>
               <button
                 ref={noButtonRef}
@@ -200,7 +274,7 @@ const QonfessionStep: React.FC<QonfessionStepProps> = ({
                     : {}
                 }
               >
-                No
+                No 🥺
               </button>
             </div>
           </div>
