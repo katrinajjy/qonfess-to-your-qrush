@@ -1,0 +1,7 @@
+{
+  "name": "Qonfess to Your Qrush",
+  "description": "A fun app to help you craft the perfect, slightly exaggerated, confession to your crush using AI-generated accomplishments and a personalized Valentine's card.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
