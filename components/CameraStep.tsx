@@ -83,7 +83,7 @@ const CameraStep: React.FC<CameraStepProps> = ({ onPhotoCapture }) => {
   return (
     <div className="text-center p-6 bg-white rounded-2xl shadow-xl animate-fade-in">
         <h2 className="text-3xl font-bold text-slate-800 mb-2">Step 1: The Face Card</h2>
-        <p className="text-slate-500 mb-4">Smile! We need your face for the Valentine's card.</p>
+        <p className="text-slate-500 mb-4">Smile!</p>
         
         <div className="relative w-full aspect-square bg-slate-200 rounded-lg overflow-hidden mb-4">
             <video ref={videoRef} autoPlay playsInline muted className={`w-full h-full object-cover transform -scale-x-100 ${hasPhoto ? 'hidden' : ''}`}></video>
@@ -101,7 +101,7 @@ const CameraStep: React.FC<CameraStepProps> = ({ onPhotoCapture }) => {
                     Retake
                 </button>
                 <button onClick={confirmPhoto} className="w-full bg-green-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-600 transition-all duration-300">
-                    Looks Good!
+                    Oh yeah babey
                 </button>
             </div>
         )}
