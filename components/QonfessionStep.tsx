@@ -56,9 +56,9 @@ const QonfessionStep: React.FC<QonfessionStepProps> = ({
   useEffect(() => {
     // 1. Random Background Selection Logic
     const backgroundImages = [
-      '/images/bg1.jpg', // Assuming images are in public/images/
-      '/images/bg2.jpg',
-      '/images/bg3.jpg',
+      '../images/m1.jpg', // Assuming images are in public/images/
+      '../images/m2.jpg',
+      '../images/m3.jpg',
     ];
     const randomIndex = Math.floor(Math.random() * backgroundImages.length);
     setSelectedBackground(backgroundImages[randomIndex]);
@@ -136,9 +136,9 @@ const QonfessionStep: React.FC<QonfessionStepProps> = ({
                    w-full h-full max-w-7xl max-h-5xl
                    flex flex-col md:flex-row gap-8 md:gap-12 overflow-hidden"
       >
-        {/* Image Area - Given 1/3 width on md screens */}
+        {/* Image Area - Given 2/5 width on md screens (WIDER) */}
         <div
-          className="relative w-full md:w-1/3 h-1/3 md:h-full rounded-lg overflow-hidden shrink-0 bg-rose-200 bg-cover bg-center"
+          className="relative w-full md:w-2/5 h-1/3 md:h-full rounded-lg overflow-hidden shrink-0 bg-rose-200 bg-cover bg-center"
           style={{
             // Dynamic Background Image URL
             backgroundImage: `url('${selectedBackground}')`,
@@ -147,18 +147,19 @@ const QonfessionStep: React.FC<QonfessionStepProps> = ({
           <img
             src={userImage} // Still uses the prop for the user's face
             alt="Your face"
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 md:w-56 md:h-56 rounded-full object-cover border-4 border-white shadow-lg"
+            // PROFILE PHOTO POSITIONING: Moved to top-1/4 for higher placement, centered horizontally
+            className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 md:w-64 md:h-64 rounded-full object-cover border-4 border-white shadow-lg"
           />
           <div
-            className="absolute top-8 left-8 text-white font-display text-4xl"
+            className="absolute bottom-8 left-8 text-white font-display text-4xl"
             style={{ textShadow: '1px 1px 5px rgba(0,0,0,0.7)' }}
           >
             Be Mine?
           </div>
         </div>
 
-        {/* Content Area - Takes remaining 2/3 width, centered vertically */}
-        <div className="flex flex-col w-full md:w-2/3 justify-center items-center md:items-start text-center md:text-left p-4 md:p-0">
+        {/* Content Area - Takes remaining 3/5 width, centered vertically */}
+        <div className="flex flex-col w-full md:w-3/5 justify-center items-center md:items-start text-center md:text-left p-4 md:p-0">
           {/* Accomplishments/Loading Area */}
           <div className="text-center flex-grow flex items-center justify-center mb-12 max-w-2xl">
             {loading && <LoadingMessage />}
