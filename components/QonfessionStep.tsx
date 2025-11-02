@@ -58,9 +58,9 @@ const QonfessionStep: React.FC<QonfessionStepProps> = ({
   useEffect(() => {
     // 1. Random Background Selection Logic
     const backgroundImages = [
-      '../images/m1.jpg', // Assuming images are in public/images/
-      '../images/m2.jpg',
-      '../images/m3.jpg',
+      '/images/m1.jpg', // Assuming images are in public/images/
+      '/images/m2.jpg',
+      '/images/m3.jpg',
     ];
     const randomIndex = Math.floor(Math.random() * backgroundImages.length);
     setSelectedBackground(backgroundImages[randomIndex]);
