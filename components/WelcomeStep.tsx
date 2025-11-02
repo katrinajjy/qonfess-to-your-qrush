@@ -18,15 +18,15 @@ const WelcomeStep: React.FC<WelcomeStepProps> = ({ onStart }) => {
         <div className="flex justify-center mb-6">
             <HeartIcon />
         </div>
-        <h1 className="text-5xl font-display text-rose-600 mb-4">Qonfess to your Qrush</h1>
+        <h1 className="text-5xl font-display text-rose-600 mb-4">Qonfess to your Qrush!?!</h1>
         <p className="text-slate-600 mb-8 max-w-xs mx-auto">
-            Ready to win them over? Let's craft the perfect, AI-powered confession they can't say no to.
+            Are you ready to win over your crush with the perfect confession?
         </p>
         <button
             onClick={onStart}
             className="w-full bg-rose-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-rose-600 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-rose-300 shadow-lg"
         >
-            Let's Begin the Rizz
+            Let's begin the rizz
         </button>
     </div>
   );

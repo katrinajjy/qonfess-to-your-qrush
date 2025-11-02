@@ -27,12 +27,12 @@ const CrushFormStep: React.FC<CrushFormStepProps> = ({ onFormSubmit }) => {
   return (
     <div className="p-6 bg-white rounded-2xl shadow-xl animate-fade-in">
       <h2 className="text-3xl font-bold text-slate-800 mb-2 text-center">Step 2: The Intel</h2>
-      <p className="text-slate-500 mb-6 text-center">Tell us about your crush to tailor the perfect lies.</p>
+      <p className="text-slate-500 mb-6 text-center">Tell us about your crush to tailor your card.</p>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
           <label htmlFor="major" className="block text-sm font-medium text-slate-700 mb-1">
-            Crush's Major
+            Your crush's major
           </label>
           <input
             type="text"
@@ -47,7 +47,7 @@ const CrushFormStep: React.FC<CrushFormStepProps> = ({ onFormSubmit }) => {
 
         <div>
           <label htmlFor="interests" className="block text-sm font-medium text-slate-700 mb-1">
-            Crush's Interests
+            Your crush's interests
           </label>
           <textarea
             id="interests"

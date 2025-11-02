@@ -11,11 +11,11 @@ interface QonfessionStepProps {
 // --- Loading Message Component ---
 const LoadingMessage: React.FC = () => {
   const messages = [
-    'Fabricating impressive achievements...',
-    'Consulting the romance oracle...',
-    'Calibrating charm levels...',
-    'Brewing a love potion...',
-    'Downloading rizz.exe...',
+    'Compiling impressive achievements...',
+    'Imaging our futures together...',
+    'Consulting LinkedIns...',
+    'Please please please...',
+    'Chat is this rizz...',
   ];
   const [message, setMessage] = useState(messages[0]);
 
@@ -108,11 +108,10 @@ const QonfessionStep: React.FC<QonfessionStepProps> = ({
         <div className="text-center p-8 bg-white rounded-2xl shadow-xl animate-fade-in max-w-lg w-full">
           <div className="text-6xl mb-4">🎉</div>
           <h2 className="text-3xl font-bold text-slate-800 mb-4">
-            She said YES! (kinda)
+            You said YES!
           </h2>
           <p className="text-slate-600 mb-8">
-            You've successfully navigated your own simulation. Now go ask them for
-            real! You got this.
+            I'm so glad you said yes, it really was the right choice
           </p>
           <button
             onClick={onReset}
